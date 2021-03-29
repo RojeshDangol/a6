@@ -1,0 +1,24 @@
+language: node_js # Building with node js
+node_js:
+   - stable # Download the stable node version
+ 
+# Blocklist
+branches:
+   except:
+     - gh-pages # will be deployed to, no need to build it
+ 
+cache:
+  directories:
+   - node_modules
+ 
+script:
+   - npm run build # Generates the dist folder with built angular app
+ 
+deploy:
+   - provider: azure_web_apps
+     username: a6github\$a6github
+     password: TDe79LmF1lYzpB2sa6vwP2Z0DR16idiAJs1r7gknpr89pzhSE76KthJAtPl2
+     site: https://a6github.azurewebsites.net
+     on:
+         branch: master
+         skip_cleanup: true
